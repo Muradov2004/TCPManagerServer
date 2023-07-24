@@ -14,7 +14,7 @@ var br = new BinaryReader(stream);
 var bw = new BinaryWriter(stream);
 Command command = null!;
 string response = null!;
-
+Console.WriteLine($"Cleint started [{ip}:{port}]");
 while (true)
 {
     Console.WriteLine("Write command or HELP: ");
@@ -55,7 +55,6 @@ while (true)
         case Command.Kill:
             command = new Command { Text = input[0], Param = input[1] };
             bw.Write(JsonSerializer.Serialize(command));
-            Console.WriteLine(br.ReadString());
             Console.ReadLine();
             Console.Clear();
             break;
